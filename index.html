@@ -1,0 +1,598 @@
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahma Amelia</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Nunito:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    .font-heading { font-family: 'Cormorant Garamond', serif; }
+    .font-body { font-family: 'Nunito', sans-serif; }
+    
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: currentColor;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    .section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .leaf-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 5c-5 8-15 12-15 25 0 10 7 18 15 20 8-2 15-10 15-20 0-13-10-17-15-25z' fill='%232d5a3d' fill-opacity='0.05'/%3E%3C/svg%3E");
+    }
+    
+    .task-card {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .task-card:hover {
+      transform: translateY(-8px);
+    }
+    
+    .social-icon {
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .social-icon:hover {
+      transform: scale(1.1);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body">
+  <div id="app" class="h-full w-full overflow-auto leaf-pattern" style="background-color: #f5f7f2;">
+  <!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md" style="background-color: rgba(245, 247, 242, 0.9);">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+     <div class="flex items-center justify-between">
+      <div class="font-heading text-2xl font-bold" style="color: #2d5a3d;">
+       <svg class="inline-block w-8 h-8 mr-2" viewbox="0 0 40 40" fill="none"><path d="M20 5C15 13 5 17 5 30c0 5 7 8 15 8s15-3 15-8c0-13-10-17-15-25z" fill="#2d5a3d" /> <path d="M20 10c-3 5-8 8-8 18 0 3 4 5 8 5s8-2 8-5c0-10-5-13-8-18z" fill="#4a7c59" />
+       </svg> PORTFOLIO
+      </div>
+      <div class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link active font-medium" style="color: #2d5a3d;" data-section="home">Home</a> <a href="#profile" class="nav-link font-medium" style="color: #5a7d6a;" data-section="profile">Profile</a> <a href="#tasks" class="nav-link font-medium" style="color: #5a7d6a;" data-section="tasks">Tasks</a> <a href="#contact" class="nav-link font-medium" style="color: #5a7d6a;" data-section="contact">Contact</a>
+      </div><button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg" style="color: #2d5a3d;">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+	 <!-- Mobile Menu -->
+     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t" style="border-color: #d4e5d8;">
+      <div class="flex flex-col gap-4 pt-4"><a href="#home" class="nav-link font-medium" style="color: #2d5a3d;" data-section="home">Home</a> <a href="#profile" class="nav-link font-medium" style="color: #5a7d6a;" data-section="profile">Profile</a> <a href="#tasks" class="nav-link font-medium" style="color: #5a7d6a;" data-section="tasks">Tasks</a> <a href="#contact" class="nav-link font-medium" style="color: #5a7d6a;" data-section="contact">Contact</a>
+      </div>
+     </div>
+    </div>
+   </nav>
+   <!-- Home Section -->
+   <section id="home" class="section min-h-screen flex items-center justify-center px-6 pt-20">
+    <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center">
+     <div class="order-2 md:order-1">
+      <p class="text-sm uppercase tracking-widest mb-4 animate-fade-in" style="color: #4a7c59;">HELLO! I AM... :D</p>
+      <h1 id="hero-name" class="font-heading text-5xl md:text-7xl font-bold mb-6 animate-fade-in delay-1" style="color: #1a3a28;">Rahma Amelia</h1>
+      <p id="hero-tagline" class="text-xl mb-4 animate-fade-in delay-2" style="color: #4a7c59;">Computer and Network Engineering Student</p>
+      <p id="hero-description" class="text-lg leading-relaxed mb-8 animate-fade-in delay-3" style="color: #5a7d6a;">I'm Rahma Amelia, a 17 year old 12th grade student at SMK Negeri 3 Bogor. I have skills in graphic design and video editing. I also have a strong interest in filmmaking and nature.</p>
+      <div class="flex flex-wrap gap-4 animate-fade-in delay-4"><a href="#tasks" class="px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg" style="background-color: #2d5a3d; color: #ffffff;"> View Tasks </a> <a href="#contact" class="px-8 py-3 rounded-full font-semibold border-2 transition-all duration-300 hover:shadow-lg" style="border-color: #2d5a3d; color: #2d5a3d; background-color: transparent;"> Contact </a>
+      </div>
+     </div>
+     <div class="order-1 md:order-2 flex justify-center">
+      <div class="relative">
+       <div class="absolute -top-4 -left-4 w-full h-full rounded-3xl" style="background-color: #d4e5d8;"></div>
+       <div class="relative w-72 h-96 md:w-80 md:h-[28rem] rounded-3xl overflow-hidden shadow-2xl float-animation">
+	    <img src="foto amel 1.jpeg" width="320" height="448"> 
+        <svg class="w-full h-full" viewbox="0 0 320 448" fill="none" >
+		</svg>
+       </div>
+	   <!-- Decorative Elements -->
+       <div class="absolute -bottom-6 -right-6 w-20 h-20 rounded-full flex items-center justify-center" style="background-color: #4a7c59;">
+        <svg class="w-10 h-10" viewbox="0 0 40 40" fill="none"><path d="M20 5c-8 10-12 15-12 25 0 5 5 8 12 8s12-3 12-8c0-10-4-15-12-25z" fill="#ffffff" />
+        </svg>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Profile Section -->
+    <section id="profile" class="section pt-24 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+     <h2 id="profile-title" class="font-heading text-5xl font-bold text-center mb-16" style="color: #2d5a4a;">About Me</h2>
+     <div class="grid md:grid-cols-3 gap-8">
+	 <!-- Personal Info Card -->
+      <div class="rounded-2xl p-8 shadow-lg" style="background-color: #ffffff; border-left: 4px solid #2d5a4a;">
+       <h3 class="font-heading text-2xl font-semibold mb-6" style="color: #2d5a4a;">Personal Info</h3>
+       <div class="space-y-4">
+        <div class="flex items-center gap-3">
+         <svg class="w-5 h-5" fill="#8b7355" viewbox="0 0 20 20">
+          <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+         </svg><span style="color: #5a5a5a;">Rahma Amelia</span>
+        </div>
+        <div class="flex items-center gap-3">
+         <svg class="w-5 h-5" fill="#8b7355" viewbox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" />
+         </svg><span style="color: #5a5a5a;">Bogor, West Java</span>
+        </div>
+        <div class="flex items-center gap-3">
+         <svg class="w-5 h-5" fill="#8b7355" viewbox="0 0 20 20">
+          <path d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" />
+         </svg><span style="color: #5a5a5a;">SMKN 3 Bogor</span>
+        </div>
+        <div class="flex items-center gap-3">
+         <svg class="w-5 h-5" fill="#8b7355" viewbox="0 0 20 20">
+          <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z" />
+         </svg><span style="color: #5a5a5a;">Computer and Network Engineering Student</span>
+        </div>
+       </div>
+      </div><!-- Bio Card -->
+      <div class="md:col-span-2 rounded-2xl p-8 shadow-lg" style="background-color: #ffffff;">
+       <h3 class="font-heading text-2xl font-semibold mb-6" style="color: #2d5a4a;">Rahma Amelia</h3>
+       <p id="profile-description" class="leading-relaxed mb-6" style="color: #5a5a5a;">Hello, I am a confident and creative designer with strong self-motivation and the ability to work independently. I have a solid background in graphic design and video editing. I am detail-oriented and have a good understanding of Canva, CapCut, and basic photography and videography.</p>
+       <p class="leading-relaxed mb-6" style="color: #5a5a5a;">I have a persistent attitude and always strive to maintain quality in my work. I am hardworking and ambitious, and I can follow instructions from senior designers and clients effectively. I also have a strong enthusiasm for trying new things and learning new skills.</p>
+       <div class="grid grid-cols-3 gap-4 mt-8 pt-6" style="border-top: 1px solid #e5e5e5;">
+        <div class="text-center">
+         <p class="font-heading text-3xl font-bold" style="color: #2d5a4a;">1</p>
+         <p class="text-sm" style="color: #8b7355;">Years Experience</p>
+        </div>
+        <div class="text-center">
+         <p class="font-heading text-3xl font-bold" style="color: #2d5a4a;">50+</p>
+         <p class="text-sm" style="color: #8b7355;">Projects Completed</p>
+        </div>
+		  <div class="text-center">
+         <p class="font-heading text-3xl font-bold" style="color: #2d5a4a;">20+</p>
+         <p class="text-sm" style="color: #8b7355;">Cup of Coffe</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Tasks Section -->
+   <section id="tasks" class="section min-h-screen px-6 py-20" style="background-color: #f5f7f2;">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16">
+      <p class="text-sm uppercase tracking-widest mb-4" style="color: #4a7c59;">My Work</p>
+      <h2 class="font-heading text-4xl md:text-5xl font-bold" style="color: #1a3a28;">Featured Tasks</h2>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+	 <!-- Task Card 1 -->
+	 <a href="https://youtu.be/Y8aLzfy7vP4?si=9Av2k-rABHqGe8_0" target="_blank">
+	 <div class="task-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+        <div class="experience-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+       <div class="h-56 relative">
+		<img src="motivation vid.jpeg" class="w-full h-full object-cover" style="aspect-ratio:16/9;" alt="project image">
+        <div class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium" style="background-color: #8b7355; color: #f8f6f3;">
+         January 2026
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-heading text-xl font-semibold mb-2" style="color: #2d5a4a;">Motivation Video "Kompetitif"</h3>
+        <p class="text-sm leading-relaxed" style="color: #5a5a5a;">A short film that tells the story of my motivation, inspired by a word that reflects my personality: “competitive.” This project was created as part of a school assignment.</p>
+       </div>
+      </div>
+	  </div>
+	  </a>
+	  <!-- Task Card 2 -->
+	  <a href="https://www.instagram.com/p/DRRdjp9klk8/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+	 <div class="task-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+        <div class="experience-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+       <div class="h-56 relative">
+		<img src="konten 1.jpg" class="w-full h-full object-cover" style="aspect-ratio:16/9;" alt="project image">
+        <div class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium" style="background-color: #8b7355; color: #f8f6f3;">
+         November 2025
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-heading text-xl font-semibold mb-2" style="color: #2d5a4a;">"World Children's Day" Carousel</h3>
+        <p class="text-sm leading-relaxed" style="color: #5a5a5a;">An Instagram content project consisting of four slides about World Children’s Day, focusing on the impact of the environment on children.</p>
+       </div>
+      </div>
+	  </div>
+	  </a>
+	  	<!-- Task Card 3 -->
+		<a href="https://www.instagram.com/p/DOqBYvgEhW2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+	 <div class="task-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+        <div class="experience-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+       <div class="h-56 relative">
+		<img src="konten 2.jpg" class="w-full h-full object-cover" style="aspect-ratio:16/9;" alt="project image">
+        <div class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium" style="background-color: #8b7355; color: #f8f6f3;">
+         September 2025
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-heading text-xl font-semibold mb-2" style="color: #2d5a4a;">"World Ozon Day" Carousel</h3>
+        <p class="text-sm leading-relaxed" style="color: #5a5a5a;">An Instagram content project consisting of four slides about World Ozone Day, explaining what ozone is, its functions, and the purpose of celebrating World Ozone Day.</p>
+       </div>
+      </div>
+	  </div>
+	  </a>
+	  <!-- Task Card 4 -->
+	 <a href="https://www.instagram.com/reel/DQ55X6REseK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+	 <div class="task-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+        <div class="experience-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+       <div class="h-56 relative">
+		<img src="konten 3.jpeg" class="w-full h-full object-cover" style="aspect-ratio:16/9;" alt="project image">
+        <div class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium" style="background-color: #8b7355; color: #f8f6f3;">
+         Oktober 2025
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-heading text-xl font-semibold mb-2" style="color: #2d5a4a;">After Movie "AMJI X Sobat PILI"</h3>
+        <p class="text-sm leading-relaxed" style="color: #5a5a5a;">A short video highlight summarizing the activities from the AMJI x Sobat PILI event.</p>
+       </div>
+      </div>
+	  </div>
+	  </a>
+	  <!-- Task Card 5 -->
+	  <a href="https://www.instagram.com/reel/DRhF5X4khyV/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+	 <div class="task-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+        <div class="experience-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+       <div class="h-56 relative">
+		<img src="konten 4.jpeg" class="w-full h-full object-cover" style="aspect-ratio:16/9;" alt="project image">
+        <div class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium" style="background-color: #8b7355; color: #f8f6f3;">
+         November 2025
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-heading text-xl font-semibold mb-2" style="color: #2d5a4a;">Environmental Awareness Video</h3>
+        <p class="text-sm leading-relaxed" style="color: #5a5a5a;">An educational video explaining the importance of forests, which play a vital role in producing oxygen and cooling the air. Because of these benefits, forests are often referred to as The Lungs of The Earth.</p>
+       </div>
+      </div>
+	  </div>
+	  </a>
+	  <!-- Task Card 6 -->
+      <a href="https://www.instagram.com/p/DQEjitYkoNi/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+	 <div class="task-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+        <div class="experience-card rounded-2xl overflow-hidden shadow-lg" style="background-color: #ffffff;">
+       <div class="h-56 relative">
+		<img src="konten 5.jpg" class="w-full h-full object-cover" style="aspect-ratio:16/9;" alt="project image">
+        <div class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium" style="background-color: #8b7355; color: #f8f6f3;">
+         Oktober 2025
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="font-heading text-xl font-semibold mb-2" style="color: #2d5a4a;">Event Registration Promotion</h3>
+        <p class="text-sm leading-relaxed" style="color: #5a5a5a;">An event registration advertisement presenting event information, requirements, and participation benefits, accompanied by a QR code or registration link.</p>
+       </div>
+      </div>
+	  </div>
+	  </a>
+    </div>
+   </section>
+   <!-- Contact Section -->
+   <section id="contact" class="section min-h-screen flex items-center justify-center px-6 py-20" style="background-color: #ffffff;">
+    <div class="max-w-6xl w-full">
+     <div class="text-center mb-16">
+      <p class="text-sm uppercase tracking-widest mb-4" style="color: #4a7c59;">Let's Connect</p>
+      <h2 id="contact-title" class="font-heading text-4xl md:text-5xl font-bold" style="color: #1a3a28;">Get In Touch</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12">
+	 <!-- Contact Form -->
+      <div class="p-8 rounded-3xl shadow-lg" style="background-color: #f5f7f2;">
+       <h3 class="font-heading text-2xl font-bold mb-6" style="color: #1a3a28;">Send a Message</h3>
+       <form id="contact-form" class="space-y-6">
+        <div><label for="name" class="block text-sm font-medium mb-2" style="color: #5a7d6a;">Your Name</label> <input type="text" id="name" name="name" placeholder="Enter your name" class="w-full px-4 py-3 rounded-xl border-2 focus:outline-none transition-colors" style="border-color: #d4e5d8; background-color: #ffffff;" onfocus="this.style.borderColor='#2d5a3d'" onblur="this.style.borderColor='#d4e5d8'">
+        </div>
+        <div><label for="email" class="block text-sm font-medium mb-2" style="color: #5a7d6a;">Email Address</label> <input type="email" id="email" name="email" placeholder="Enter your email" class="w-full px-4 py-3 rounded-xl border-2 focus:outline-none transition-colors" style="border-color: #d4e5d8; background-color: #ffffff;" onfocus="this.style.borderColor='#2d5a3d'" onblur="this.style.borderColor='#d4e5d8'">
+        </div>
+        <div><label for="message" class="block text-sm font-medium mb-2" style="color: #5a7d6a;">Your Message</label> <textarea id="message" name="message" rows="4" placeholder="Write your message here..." class="w-full px-4 py-3 rounded-xl border-2 focus:outline-none transition-colors resize-none" style="border-color: #d4e5d8; background-color: #ffffff;" onfocus="this.style.borderColor='#2d5a3d'" onblur="this.style.borderColor='#d4e5d8'"></textarea>
+        </div><button type="submit" class="w-full py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg" style="background-color: #2d5a3d; color: #ffffff;"> Send Message </button>
+        <div id="form-message" class="hidden text-center py-3 rounded-xl"></div>
+       </form>
+      </div>
+	  <!-- Social & Contact Info -->
+      <div class="space-y-8">
+       <div class="p-8 rounded-3xl" style="background-color: #f5f7f2;">
+        <h3 class="font-heading text-2xl font-bold mb-6" style="color: #1a3a28;">Contact Information</h3>
+        <div class="space-y-4">
+         <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: #2d5a3d;">
+           <svg class="w-5 h-5" fill="#ffffff" viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+           </svg>
+          </div>
+          <div>
+           <p class="text-sm" style="color: #5a7d6a;">Email</p>
+           <p class="font-medium" style="color: #1a3a28;">rahmaamelia0906@gmail.com</p>
+          </div>
+         </div>
+         <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: #2d5a3d;">
+           <svg class="w-5 h-5" fill="#ffffff" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+           </svg>
+          </div>
+          <div>
+           <p class="text-sm" style="color: #5a7d6a;">Location</p>
+           <p class="font-medium" style="color: #1a3a28;">Bogor, West Java, Indonesia</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="p-8 rounded-3xl" style="background-color: #f5f7f2;">
+        <h3 class="font-heading text-2xl font-bold mb-6" style="color: #1a3a28;">Follow Me</h3>
+        <div class="flex gap-4">
+		<a href="https://www.instagram.com/qrhamel?igsh=OTlnbzE2ZHR6cnNq&utm_source=qr" target="_blank" class="social-icon w-14 h-14 rounded-full flex items-center justify-center" style="background-color: #2d5a3d;">
+          <svg class="w-6 h-6" fill="#ffffff" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg></a> 
+		  <a href="https://www.tiktok.com/@heavyleaves?is_from_webapp=1&sender_device=pc" target="_blank" class="social-icon w-14 h-14 rounded-full flex items-center justify-center" style="background-color: #2d5a3d;">
+		<svg class="w-6 h-6" fill="#ffffff" viewBox="0 0 24 24">
+		<path d="M12.75 2h2.25c.15 1.28.7 2.47 1.58 3.35.89.89 2.08 1.43 3.42 1.55v2.28c-1.78-.05-3.48-.64-4.98-1.69v7.23a6.01 6.01 0 11-6.01-6c.34 0 .67.03 1 .09v2.34a3.66 3.66 0 00-1-.14 3.66 3.66 0 103.66 3.66V2z"/>
+		</svg></a>
+		  <a href="https://www.linkedin.com/in/rahma-amelia-9782b53b7/" target="_blank" class="social-icon w-14 h-14 rounded-full flex items-center justify-center" style="background-color: #2d5a3d;">
+          <svg class="w-6 h-6" fill="#ffffff" viewbox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg></a> 
+		  <a href="https://github.com/chipmunktea" target="_blank" class="social-icon w-14 h-14 rounded-full flex items-center justify-center" style="background-color: #2d5a3d;">
+          <svg class="w-6 h-6" fill="#ffffff" viewbox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+          </svg></a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Footer -->
+   <footer class="py-8 text-center" style="background-color: #1a3a28; color: #d4e5d8;">
+    <p class="text-sm">© 2026 Rahma Amelia. All rights reserved.</p>
+    <p class="text-xs mt-2 opacity-70">With my 🍁 and my spirit</p>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      hero_name: 'Alexandra Rivers',
+      hero_tagline: 'Nature Photographer & Environmental Artist',
+      hero_description: 'Capturing the serene beauty of untouched wilderness, one frame at a time. My work celebrates the delicate balance of our natural world.',
+      profile_title: 'About Me',
+      profile_bio: "I'm a passionate nature photographer and environmental artist based in the Pacific Northwest. My journey began in the misty forests of Oregon, where I first discovered my love for capturing the raw beauty of the natural world. Through my lens, I aim to inspire others to protect and cherish our planet's precious ecosystems.",
+      contact_title: 'Get In Touch',
+      background_color: '#f5f7f2',
+      surface_color: '#ffffff',
+      text_color: '#1a3a28',
+      primary_action_color: '#2d5a3d',
+      secondary_text_color: '#5a7d6a',
+      font_family: 'Cormorant Garamond',
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      // Update text content
+      document.getElementById('hero-name').textContent = config.hero_name || defaultConfig.hero_name;
+      document.getElementById('hero-tagline').textContent = config.hero_tagline || defaultConfig.hero_tagline;
+      document.getElementById('hero-description').textContent = config.hero_description || defaultConfig.hero_description;
+      document.getElementById('profile-title').textContent = config.profile_title || defaultConfig.profile_title;
+      document.getElementById('profile-bio').textContent = config.profile_bio || defaultConfig.profile_bio;
+      document.getElementById('contact-title').textContent = config.contact_title || defaultConfig.contact_title;
+
+      // Update colors
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryTextColor = config.secondary_text_color || defaultConfig.secondary_text_color;
+
+      document.getElementById('app').style.backgroundColor = bgColor;
+      
+      // Update headings
+      document.querySelectorAll('[style*="color: #1a3a28"]').forEach(el => {
+        el.style.color = textColor;
+      });
+
+      // Update fonts
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      
+      document.querySelectorAll('.font-heading').forEach(el => {
+        el.style.fontFamily = `${customFont}, serif`;
+      });
+
+      document.querySelectorAll('h1').forEach(el => {
+        el.style.fontSize = `${baseSize * 3.5}px`;
+      });
+      document.querySelectorAll('h2').forEach(el => {
+        el.style.fontSize = `${baseSize * 2.5}px`;
+      });
+      document.querySelectorAll('h3').forEach(el => {
+        el.style.fontSize = `${baseSize * 1.5}px`;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => { config.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => { config.primary_action_color = value; window.elementSdk.setConfig({ primary_action_color: value }); }
+          },
+          {
+            get: () => config.secondary_text_color || defaultConfig.secondary_text_color,
+            set: (value) => { config.secondary_text_color = value; window.elementSdk.setConfig({ secondary_text_color: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['hero_name', config.hero_name || defaultConfig.hero_name],
+        ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
+        ['hero_description', config.hero_description || defaultConfig.hero_description],
+        ['profile_title', config.profile_title || defaultConfig.profile_title],
+        ['profile_bio', config.profile_bio || defaultConfig.profile_bio],
+        ['contact_title', config.contact_title || defaultConfig.contact_title]
+      ]);
+    }
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Navigation functionality
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Mobile menu toggle
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Smooth scroll and active nav
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+          
+          // Update active state
+          navLinks.forEach(l => {
+            l.classList.remove('active');
+            l.style.color = '#5a7d6a';
+          });
+          link.classList.add('active');
+          link.style.color = '#2d5a3d';
+          
+          // Close mobile menu
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '-50px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          
+          // Update nav active state
+          const sectionId = entry.target.id;
+          navLinks.forEach(link => {
+            if (link.getAttribute('data-section') === sectionId) {
+              link.classList.add('active');
+              link.style.color = '#2d5a3d';
+            } else {
+              link.classList.remove('active');
+              link.style.color = '#5a7d6a';
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // Form submission
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (name && email && message) {
+        formMessage.classList.remove('hidden');
+        formMessage.style.backgroundColor = '#d4e5d8';
+        formMessage.style.color = '#2d5a3d';
+        formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+        
+        contactForm.reset();
+        
+        setTimeout(() => {
+          formMessage.classList.add('hidden');
+        }, 5000);
+      } else {
+        formMessage.classList.remove('hidden');
+        formMessage.style.backgroundColor = '#ffd4d4';
+        formMessage.style.color = '#8b0000';
+        formMessage.textContent = 'Please fill in all fields.';
+      }
+    });
+
+    // Initial visibility for home section
+    document.getElementById('home').classList.add('visible');
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9dc291f6f25bea81',t:'MTc3MzQ4Mzg4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
